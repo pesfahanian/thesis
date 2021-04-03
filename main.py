@@ -1,13 +1,12 @@
 from config import Config
 
-from data import data
+from data import dataset
 
 from runtime import Runtime
 
 
 def main():
-    runtime = Runtime(data=data,
-                      hidden_channels=Config.hidden_channels)
+    runtime = Runtime(dataset=dataset, hidden_channels=Config.hidden_channels)
 
     for epoch in range(Config.epochs):
         loss = runtime.train()

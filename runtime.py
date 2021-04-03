@@ -1,13 +1,12 @@
 import torch
 
-from data import data
 from model import GCN
 
 
 class Runtime:
-    def __init__(self, data, hidden_channels: int) -> None:
-        self.data = data
-        self.model = GCN(hidden_channels=hidden_channels)
+    def __init__(self, dataset, hidden_channels: int) -> None:
+        self.data = dataset[0]
+        self.model = GCN(dataset=dataset, hidden_channels=hidden_channels)
         self.optimizer = torch.optim.Adam(self.model.parameters(),
                                      lr=0.01,
                                      weight_decay=5e-4)
